@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prompt Smarter, Teach Better | Shreya Bhardwaj</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--board:#1d3a33;--chalk:#f4f6f1;--yellow:#f3cf5b;--paper:#fbfcf9;--ink:#1c2623;--muted:#55645f;--line:#d9e0da;--card:#ffffff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#121c19;--ink:#e8eee9;--muted:#9fb0a9;--line:#2a3b36;--card:#192622;color-scheme:dark}}
+*,*::before,*::after{box-sizing:inherit}
+html{background:var(--board);scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 Nunito,system-ui,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Caveat Brush","Segoe Print",cursive;font-weight:400;line-height:1.1;margin:0}
+h2{font-size:2.1rem;margin-bottom:.6rem}
+section{padding:48px 0}
+.hero{background:var(--board);color:var(--chalk);padding:56px 0 64px}
+.hero h1{font-size:clamp(2.8rem,11vw,4.6rem);color:var(--chalk)}
+.hero .sub{font-size:1.2rem;margin:18px 0 6px;max-width:30em}
+.hero .by{color:var(--yellow);font-weight:600;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:13px 22px;border-radius:8px;font-weight:800;text-decoration:none;font-size:1rem;border:2px solid var(--yellow);cursor:pointer;font-family:inherit}
+.btn.solid{background:var(--yellow);color:#1d3a33}
+.btn.ghost{background:transparent;color:var(--yellow)}
+.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.hook p{font-size:1.15rem}
+ul.learn{padding:0;list-style:none;margin:16px 0 0}
+ul.learn li{padding:12px 0 12px 30px;border-top:1px solid var(--line);position:relative}
+ul.learn li::before{content:"✓";position:absolute;left:4px;color:#2f7d62;font-weight:800}
+.cols{display:grid;gap:28px}
+@media(min-width:640px){.cols{grid-template-columns:1.2fr 1fr}}
+ol.ch{margin:0;padding-left:1.4em}
+ol.ch li{padding:3px 0}
+.bonus{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.bonus h3{font-size:1.5rem;margin-bottom:6px}
+.bonus ul{margin:0;padding-left:1.2em}
+.sample{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scroll{overflow-x:auto;margin:14px 0 22px}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:.95rem}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--board);color:var(--chalk);font-weight:600}
+.prompt{border-left:4px solid var(--yellow);background:var(--paper);padding:14px 16px;margin:14px 0;border-radius:0 8px 8px 0}
+.prompt b{display:block;margin-bottom:4px}
+.prompt p{margin:0 0 10px}
+.copy{font:600 .9rem Nunito,sans-serif;padding:6px 12px;border-radius:6px;border:1px solid var(--muted);background:transparent;color:var(--ink);cursor:pointer}
+.note{color:var(--muted);font-size:.95rem}
+.cta{background:var(--board);color:var(--chalk);text-align:center;padding:52px 0}
+.cta h2{color:var(--chalk)}
+.cta p{max-width:30em;margin:0 auto 22px}
+.cta .btns{justify-content:center}
+footer{background:var(--board);color:var(--chalk);padding:24px 0 28px;font-size:.9rem;text-align:center;border-top:1px solid #35544b}
+footer a{color:var(--yellow)}
+.hero{background:radial-gradient(ellipse at 15% 0%,rgba(255,255,255,.10),transparent 55%),radial-gradient(ellipse at 95% 100%,rgba(255,255,255,.07),transparent 50%),var(--board);border-bottom:12px solid #9a7650}
+h2::after{content:"";display:block;width:90px;height:6px;margin-top:8px;background:#e3b93c;border-radius:6px;transform:rotate(-1.5deg)}
+.cta h2::after{margin-left:auto;margin-right:auto}
+.demo{margin:26px 0 30px;max-width:34em;border:2px dashed rgba(244,246,241,.45);border-radius:14px;padding:16px 18px;font-size:1rem}
+.demo .you{color:var(--yellow);font-weight:800;margin:0 0 4px}
+.demo .typed{margin:0;min-height:5em}
+.demo .ai{margin:10px 0 0;opacity:0;transition:opacity .6s}
+.demo.done .ai{opacity:1}
+.caret::after{content:"▍";animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.todo{margin:14px 0 0;padding:14px 20px;background:var(--card);border:1px solid var(--line);border-radius:6px;background-image:repeating-linear-gradient(transparent 0 37px,var(--line) 37px 38px)}
+.todo label{display:flex;gap:14px;align-items:center;padding:7px 0;cursor:pointer;font-size:1.1rem}
+.todo input{width:24px;height:24px;accent-color:#2f7d62;flex:none}
+.todo input:checked+span{text-decoration:line-through;color:var(--muted)}
+.todo-msg{font-weight:800;margin:10px 0 0}
+.bonus{background:#f9e58f;color:#2a2a1c;border:0;border-radius:4px;transform:rotate(1.5deg);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.bonus .note{color:#4a4630}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.caret::after{animation:none}.demo .ai{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Prompt Smarter, Teach Better</h1>
+    <p class="sub">Save 5+ hours a week with AI. A practical prompting guide for teachers, with ready-to-use prompts and no tech skills needed.</p>
+    <p class="by">by Shreya Bhardwaj</p>
+    <div class="demo" id="demo">
+      <p class="you">You type:</p>
+      <p class="typed caret" id="typed">You are a 7th-grade science teacher. Write a 5-minute warm-up on photosynthesis. Keep it fun, no materials needed, and end with one question.</p>
+      <p class="ai"><b>AI replies:</b> a ready warm-up in seconds. You edit it in your own voice and walk into class prepared.</p>
+    </div>
+    <div class="btns">
+      <a class="btn solid" href="#sample">Read the free sample</a>
+      <a class="btn ghost" href="#get">Get the book</a>
+    </div>
+  </div>
+</header>
+
+<section class="hook">
+  <div class="wrap">
+    <h2>The Sunday night problem</h2>
+    <p>It’s 9:40 on a Sunday night. Thirty-two essays are still ungraded, a quiz doesn’t exist yet, and three parent emails have been waiting since Thursday.</p>
+    <p>You love teaching. Planning, grading and paperwork are what eat your evenings. AI can help, but only if you know how to ask. The problem was never AI. It was the prompt.</p>
+    <p class="note" style="margin-bottom:0">Tick off tonight’s to-do list:</p>
+    <div class="todo" id="todo">
+      <label><input type="checkbox"><span>Grade 32 essays</span></label>
+      <label><input type="checkbox"><span>Write tomorrow’s quiz</span></label>
+      <label><input type="checkbox"><span>Reply to 3 parent emails</span></label>
+      <p class="todo-msg" id="todomsg" hidden>Done. The book shows you how to clear a list like this in minutes, not hours.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>What you will learn</h2>
+    <ul class="learn">
+      <li>Write prompts that work the first time, using a simple 5-part formula</li>
+      <li>Draft lessons, quizzes, rubrics, feedback and parent emails in minutes</li>
+      <li>Adapt materials for English learners, IEP and 504 needs, and advanced students</li>
+      <li>Protect student privacy and catch AI mistakes before they reach your class</li>
+      <li>Build a personal prompt library and a 30-day plan that becomes a habit</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Inside the book</h2>
+    <div class="cols">
+      <ol class="ch">
+        <li>Why Teachers Lose Hours (and Where AI Helps)</li>
+        <li>The 5-Part Prompt Formula</li>
+        <li>Lesson Planning in Minutes</li>
+        <li>Differentiation and Accessibility</li>
+        <li>Assessments and Rubrics</li>
+        <li>Grading Feedback Without the Burnout</li>
+        <li>Communication and Admin Tasks</li>
+        <li>Student-Facing AI: Activities and Guardrails</li>
+        <li>Ethics, Privacy, and Accuracy</li>
+        <li>Build Your Personal Prompt Library</li>
+        <li>The 30-Day Implementation Plan</li>
+      </ol>
+      <div class="bonus">
+        <h3>Bonuses</h3>
+        <ul>
+          <li>50 copy-and-paste prompts</li>
+          <li>Prompt formula cheat sheet</li>
+          <li>Parent letter on classroom AI use</li>
+        </ul>
+        <p class="note" style="margin:12px 0 0">Every chapter ends with a Quick-Win Box: a tip, a real-life example and one action step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sample" id="sample">
+  <div class="wrap">
+    <h2>Free sample</h2>
+    <p>Try these before you buy. First, the formula behind every good prompt. Use as many parts as you have time for, and always include grade level and format.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Part</th><th>What it does</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><b>Role</b></td><td>Who the AI should act as</td><td>You are a 5th-grade math teacher.</td></tr>
+          <tr><td><b>Context</b></td><td>The situation and audience</td><td>My students just learned to add unlike fractions.</td></tr>
+          <tr><td><b>Task</b></td><td>Exactly what you need</td><td>Write 8 multiple-choice questions.</td></tr>
+          <tr><td><b>Constraints</b></td><td>Limits and rules</td><td>Use everyday examples; keep each question to two sentences.</td></tr>
+          <tr><td><b>Format</b></td><td>How it should look</td><td>Table with an answer key.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Then three prompts from the book. Replace anything in [brackets] with your own details, and leave student names out.</p>
+
+    <div class="prompt">
+      <b>Lesson hook</b>
+      <p>You are an experienced [grade] [subject] teacher. Create a 5-minute hook for a lesson on [topic] that sparks curiosity and needs no special materials.</p>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <div class="prompt">
+      <b>Parent email</b>
+      <p>Write a warm, professional email to a parent about missing homework. Include two supportive next steps and keep it under 150 words. Do not use names.</p>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <div class="prompt">
+      <b>Rubric</b>
+      <p>Turn these grading notes into a 4-level rubric table (Beginning, Developing, Proficient, Exceeds) in student-friendly language: [paste notes].</p>
+      <button class="copy" type="button">Copy prompt</button>
+    </div>
+    <p class="note">Always review AI output before using it. The book has 47 more prompts like these.</p>
+    <p><a class="btn solid" href="Prompt-Smarter-Teach-Better-Free-Sample.pdf" download>Download the free sample (PDF)</a></p>
+    <p class="note">Includes the Introduction and Chapter 1.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>About the author</h2>
+    <p>Shreya Bhardwaj brings together two worlds: the language and craft of English Literature, and the practical skills of computer and AI courses. A teacher herself, she turns that mix into simple prompts that give teachers their time back.</p>
+    <p>She wrote this book because she knows what a teacher’s day demands: quick, ready-to-use help.</p>
+    <p><a href="mailto:bhardwajshreya28@gmail.com">bhardwajshreya28@gmail.com</a></p>
+  </div>
+</section>
+
+<section class="cta" id="get">
+  <div class="wrap">
+    <h2>Get your evenings back</h2>
+    <p>The book is launching soon. Email me to be told the day it goes live, and to get the free prompt updates.</p>
+    <div class="btns">
+      <a class="btn solid" href="mailto:bhardwajshreya28@gmail.com?subject=Notify%20me%20about%20Prompt%20Smarter%2C%20Teach%20Better&amp;body=Hi%20Shreya%2C%20please%20let%20me%20know%20when%20the%20book%20launches.">Notify me at launch</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Shreya Bhardwaj. All rights reserved.<br>AI tools and school policies change often, so check your school’s rules before using any tool with students.</div>
+</footer>
+
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentElement.querySelector('p').textContent;
+    try{
+      navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy prompt'},1800)},function(){b.textContent='Select and copy manually'});
+    }catch(e){b.textContent='Select and copy manually'}
+  });
+});
+(function(){
+  var d=document.getElementById('demo'),t=document.getElementById('typed');
+  if(d&&t){
+    var s=t.textContent,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(rm){t.classList.remove('caret');d.classList.add('done')}
+    else{t.textContent='';var i=0;(function n(){if(i<=s.length){t.textContent=s.slice(0,i++);setTimeout(n,28)}else{t.classList.remove('caret');d.classList.add('done')}})()}
+  }
+  var boxes=document.querySelectorAll('#todo input'),msg=document.getElementById('todomsg');
+  boxes.forEach(function(b){b.addEventListener('change',function(){
+    var all=[].every.call(boxes,function(x){return x.checked});msg.hidden=!all;
+  })});
+})();
+</script>
+</body>
+</html>
